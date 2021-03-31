@@ -16,6 +16,13 @@ class App extends React.Component {
     });
   };
 
+  handleBuyClick = () => {
+    this.setState({
+      availableProducts: this.state.availableProducts - this.state.shoppingCart,
+      shoppingCart: 0,
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -29,6 +36,7 @@ class App extends React.Component {
         >
           +
         </button>
+        {this.state.shoppingCart > 0 && <button onClick={this.handleBuyClick}>Kup</button>}
       </React.Fragment>
     );
   }
