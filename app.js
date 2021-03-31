@@ -24,12 +24,14 @@ class App extends React.Component {
   };
 
   render() {
+    const amountStyle = this.state.shoppingCart === 0 ? { opacity: 0.3 } : {};
+
     return (
       <React.Fragment>
         <button onClick={this.handleRemoveClick} disabled={this.state.shoppingCart ? false : true}>
           -
         </button>
-        <span> {this.state.shoppingCart} </span>
+        <span style={amountStyle}> {this.state.shoppingCart} </span>
         <button
           onClick={this.handleAddClick}
           disabled={this.state.shoppingCart === this.state.availableProducts ? true : false}
