@@ -24,21 +24,21 @@ class App extends React.Component {
   };
 
   render() {
-    const amountStyle = this.state.shoppingCart === 0 ? { opacity: 0.3 } : {};
+    const { availableProducts, shoppingCart } = this.state;
+    const { handleRemoveClick, handleAddClick, handleBuyClick } = this;
+
+    const amountStyle = shoppingCart === 0 ? { opacity: 0.3 } : {};
 
     return (
       <React.Fragment>
-        <button onClick={this.handleRemoveClick} disabled={this.state.shoppingCart ? false : true}>
+        <button onClick={handleRemoveClick} disabled={shoppingCart ? false : true}>
           -
         </button>
-        <span style={amountStyle}> {this.state.shoppingCart} </span>
-        <button
-          onClick={this.handleAddClick}
-          disabled={this.state.shoppingCart === this.state.availableProducts ? true : false}
-        >
+        <span style={amountStyle}> {shoppingCart} </span>
+        <button onClick={handleAddClick} disabled={shoppingCart === availableProducts ? true : false}>
           +
         </button>
-        {this.state.shoppingCart > 0 && <button onClick={this.handleBuyClick}>Kup</button>}
+        {shoppingCart > 0 && <button onClick={handleBuyClick}>Kup</button>}
       </React.Fragment>
     );
   }
